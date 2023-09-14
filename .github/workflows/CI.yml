@@ -1,0 +1,48 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - main
+#    paths:
+#      - 'website/**'
+  workflow_dispatch:
+    
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Pylint
+      uses: microsoft/action-python@0.7.1
+      with:
+        pylint: true
+        pylint_rc: '.pylintrc'
+        
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Pytest
+      run: |
+        python manage.py test
+        
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build and push Docker image
+      env:
+        IMAGE_NAME: ${{ secrets.DOCKERHUB_REPO }}
+      run: |
+        docker build -t $IMAGE_NAME:$GITHUB_SHA -t $IMAGE_NAME:latest .
+        docker push $IMAGE_NAME:$GITHUB_SHA
+        docker push $IMAGE_NAME:latest
