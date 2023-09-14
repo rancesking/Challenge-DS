@@ -23,11 +23,10 @@ jobs:
         python manage.py makemigrations
         python manage.py migrate
         python manage.py test
-    - name: Bandit
-      uses: microsoft/action-python@0.7.0
-      with:          
-        bandit: true
-
+    - name: Bandit Static Code Analysis
+      run: |
+        pip install bandit
+        bandit -r . 
         
   build-and-push:
     runs-on: ubuntu-latest
