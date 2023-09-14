@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push Docker image
       env:
-        IMAGE_NAME: ${{ secrets.DOCKERHUB_REPO }}
+        IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
       run: |
         docker build -t $IMAGE_NAME:$GITHUB_SHA -t $IMAGE_NAME:latest .
         docker push $IMAGE_NAME:$GITHUB_SHA
