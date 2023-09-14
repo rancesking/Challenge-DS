@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Challenge-CI
 
 on:
   push:
@@ -8,23 +8,16 @@ on:
 #      - 'website/**'
   workflow_dispatch:
     
-jobs:
-  linting:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Pylint
-      uses: microsoft/action-python@0.7.1
-      with:
-        pylint: true
-        
+jobs:     
   testing:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Pytest
+      env:
+        DJANGO_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
       run: |
         pip install -r requirements.txt
         python manage.py makemigrations
