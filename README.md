@@ -31,10 +31,15 @@ Para la ejecución de este proyecto utilicé:
 - Microk8s como distribución de Kubernetes
 - Nginx Ingress
 
-## Repositorios
+Diseñé 2 pipelines en github actions, uno para el CI donde se prueba el codigo y se realiza el escanero de voulnerabilidades y se crea la imagen de docker luego es subida al repositorio en docker hub. Otro para el CD donde se aplican los cambios en el manifiesto via kubectl.
+
+## Repositorios y Documentos
 
 - [Docker Image](https://hub.docker.com/r/xkingrd/ds-challenge)
 - [Terraform IAC Repo](https://github.com/rancesking/Challenge-DS-infra)
+- [Manifiesto de K8s](https://github.com/rancesking/Challenge-DS-infra/blob/main/kube/deploy.yml)
+- [CI Github Action](https://github.com/rancesking/Challenge-DS/blob/main/.github/workflows/CI.yml)
+- [CD Github Action](https://github.com/rancesking/Challenge-DS-infra/blob/main/.github/workflows/deploy.yml)
 
 ## Uso
 
