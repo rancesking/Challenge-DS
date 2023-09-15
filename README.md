@@ -1,43 +1,46 @@
 # DevOps Test
 
-Esta es mi implementacion de la aplicacion demo para la prueba de Devops.
+Esta es mi implementación de la aplicación demo para la prueba de DevOps.
 
 ## Diseño de infraestructura en AWS
-<p align="center">
-<img src="https://i.ibb.co/f1fzvrc/Challenge-DS-Racosta-Ideal-page-0001.jpg">
-</p>
 
-Diseñe la infraesctura en AWS utilizando las mejores practicas de desplegue de aplicaciones web en la nube de AWS (well architected framework) empleando el uso de varias zonas ded disponibilidad para obtener alta disponibilidad en nuestras cargas de trabajo. Dentro de los servicios utilizados estan: 
-EKS para el manejo de nuestro cluster de kubernetes.
-EC2 para los nodos workers de nuestro cluster de kubernetes.
-Route53 para el manejo de los records DNS para nuestros servicios desplegados.
-Elastic Load Balancer para asignar un punto de entrada para nuestro ingress.
-RDS para almacenar nuestra base de datos en modo multi-az para que nuestra base de datos sera redundante y aprueba de fallas.
-NAT Gateway para el acceso a internet de nuestros nodos workers para descargar las images de docker desde dockerhub.
-CloudWatch para monitorear el consumo de los recursos.
-SNS para enviar notificaciones para alertar a los adminsitradores de la infraestructura.
-AWS WAF para proteger nuestros endpoints de los ataques conocidos.
+![Diagrama de Infraestructura](https://i.ibb.co/f1fzvrc/Challenge-DS-Racosta-Ideal-page-0001.jpg)
 
-## Tecnologias Utilizadas
-Para la ejecución de este proyecto utilice:
-Terraform
-Python
-Docker
-Github
-Github Actions
-Bash Script
-Microk8s como distro de Kubernetes
-Nginx ingress
+Diseñé la infraestructura en AWS utilizando las mejores prácticas de despliegue de aplicaciones web en la nube de AWS (Well-Architected Framework), empleando el uso de varias zonas de disponibilidad para obtener alta disponibilidad en nuestras cargas de trabajo. Dentro de los servicios utilizados están:
+
+- EKS para el manejo de nuestro clúster de Kubernetes.
+- EC2 para los nodos workers de nuestro clúster de Kubernetes.
+- Route53 para el manejo de los registros DNS para nuestros servicios desplegados.
+- Elastic Load Balancer para asignar un punto de entrada para nuestro Ingress.
+- RDS para almacenar nuestra base de datos en modo multi-zona de disponibilidad para que nuestra base de datos sea redundante y a prueba de fallos.
+- NAT Gateway para el acceso a Internet de nuestros nodos workers para descargar las imágenes de Docker desde Docker Hub.
+- CloudWatch para monitorear el consumo de los recursos.
+- SNS para enviar notificaciones para alertar a los administradores de la infraestructura.
+- AWS WAF para proteger nuestros endpoints de los ataques conocidos.
+
+## Tecnologías Utilizadas
+
+Para la ejecución de este proyecto utilicé:
+
+- Terraform
+- Python
+- Docker
+- Github
+- Github Actions
+- Bash Script
+- Microk8s como distribución de Kubernetes
+- Nginx Ingress
 
 ## Repositorios
-[Docker image](https://hub.docker.com/r/xkingrd/ds-challenge)
-[Terraform IAC Repo](https://github.com/rancesking/Challenge-DS-infra)
 
-## Usage
+- [Docker Image](https://hub.docker.com/r/xkingrd/ds-challenge)
+- [Terraform IAC Repo](https://github.com/rancesking/Challenge-DS-infra)
 
-Refers to source code documentation on
+## Uso
+
+Consulta la documentación del código fuente en
 [Devsu demo-devops-python](https://bitbucket.org/devsu/demo-devops-python/src/master/)
 
-## License
+## Licencia
 
-Copyright © 2023 Devsu. All rights reserved.
+Copyright © 2023 Devsu. Todos los derechos reservados.
