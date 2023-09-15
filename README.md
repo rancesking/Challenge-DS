@@ -35,6 +35,7 @@ Para la ejecución de este proyecto utilicé:
 
 - [Docker Image](https://hub.docker.com/r/xkingrd/ds-challenge)
 - [Terraform IAC Repo](https://github.com/rancesking/Challenge-DS-infra)
+- [Manifiesto de K8s](https://github.com/rancesking/Challenge-DS-infra/blob/main/kube/deploy.yml)
 
 ## Uso
 
