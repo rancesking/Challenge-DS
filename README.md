@@ -1,139 +1,46 @@
-# Demo Devops Python
+# DevOps Test
 
-This is a simple application to be used in the technical test of DevOps.
+Esta es mi implementación de la aplicación demo para la prueba de DevOps.
 
-## Getting Started
+## Diseño de infraestructura en AWS
 
-### Prerequisites
+![Diagrama de Infraestructura](https://i.ibb.co/f1fzvrc/Challenge-DS-Racosta-Ideal-page-0001.jpg)
 
-- Python 3.11.3
+Diseñé la infraestructura en AWS utilizando las mejores prácticas de despliegue de aplicaciones web en la nube de AWS (Well-Architected Framework), empleando el uso de varias zonas de disponibilidad para obtener alta disponibilidad en nuestras cargas de trabajo. Dentro de los servicios utilizados están:
 
-### Installation
+- EKS para el manejo de nuestro clúster de Kubernetes.
+- EC2 para los nodos workers de nuestro clúster de Kubernetes.
+- Route53 para el manejo de los registros DNS para nuestros servicios desplegados.
+- Elastic Load Balancer para asignar un punto de entrada para nuestro Ingress.
+- RDS para almacenar nuestra base de datos en modo multi-zona de disponibilidad para que nuestra base de datos sea redundante y a prueba de fallos.
+- NAT Gateway para el acceso a Internet de nuestros nodos workers para descargar las imágenes de Docker desde Docker Hub.
+- CloudWatch para monitorear el consumo de los recursos.
+- SNS para enviar notificaciones para alertar a los administradores de la infraestructura.
+- AWS WAF para proteger nuestros endpoints de los ataques conocidos.
 
-Clone this repo.
+## Tecnologías Utilizadas
 
-```bash
-git clone https://bitbucket.org/devsu/demo-devops-python.git
-```
+Para la ejecución de este proyecto utilicé:
 
-Install dependencies.
+- Terraform
+- Python
+- Docker
+- Github
+- Github Actions
+- Bash Script
+- Microk8s como distribución de Kubernetes
+- Nginx Ingress
 
-```bash
-pip install -r requirements.txt
-```
+## Repositorios
 
-Migrate database
+- [Docker Image](https://hub.docker.com/r/xkingrd/ds-challenge)
+- [Terraform IAC Repo](https://github.com/rancesking/Challenge-DS-infra)
 
-```bash
-py manage.py makemigrations
-py manage.py migrate
-```
+## Uso
 
-### Database
+Consulta la documentación del código fuente en
+[Devsu demo-devops-python](https://bitbucket.org/devsu/demo-devops-python/src/master/)
 
-The database is generated as a file in the main path when the project is first run, and its name is `db.sqlite3`.
+## Licencia
 
-Consider giving access permissions to the file for proper functioning.
-
-## Usage
-
-To run tests you can use this command.
-
-```bash
-py manage.py test
-```
-
-To run locally the project you can use this command.
-
-```bash
-py manage.py runserver
-```
-
-Open http://localhost:8000/api/ with your browser to see the result.
-
-### Features
-
-These services can perform,
-
-#### Create User
-
-To create a user, the endpoint **/api/users/** must be consumed with the following parameters:
-
-```bash
-  Method: POST
-```
-
-```json
-{
-    "dni": "dni",
-    "name": "name"
-}
-```
-
-If the response is successful, the service will return an HTTP Status 200 and a message with the following structure:
-
-```json
-{
-    "id": 1,
-    "dni": "dni",
-    "name": "name"
-}
-```
-
-If the response is unsuccessful, we will receive status 400 and the following message:
-
-```json
-{
-    "detail": "error"
-}
-```
-
-#### Get Users
-
-To get all users, the endpoint **/api/users** must be consumed with the following parameters:
-
-```bash
-  Method: GET
-```
-
-If the response is successful, the service will return an HTTP Status 200 and a message with the following structure:
-
-```json
-[
-    {
-        "id": 1,
-        "dni": "dni",
-        "name": "name"
-    }
-]
-```
-
-#### Get User
-
-To get an user, the endpoint **/api/users/<id>** must be consumed with the following parameters:
-
-```bash
-  Method: GET
-```
-
-If the response is successful, the service will return an HTTP Status 200 and a message with the following structure:
-
-```json
-{
-    "id": 1,
-    "dni": "dni",
-    "name": "name"
-}
-```
-
-If the user id does not exist, we will receive status 404 and the following message:
-
-```json
-{
-    "detail": "Not found."
-}
-```
-
-## License
-
-Copyright © 2023 Devsu. All rights reserved.
+Copyright © 2023 Devsu. Todos los derechos reservados.
